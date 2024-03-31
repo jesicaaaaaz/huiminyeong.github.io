@@ -1,0 +1,10 @@
+body {
+    font-family: Times New Roman, serif;
+    background-image: url('your-background-image.jpg');
+    background-size: cover;
+    background-position: center bottom; /* 将背景图的底部居中显示 */
+    color: ##FDFEFE;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
