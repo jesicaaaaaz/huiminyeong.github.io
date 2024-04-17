@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background Video</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <style>
+    body {
+    .section {
+      height: 100vh;
+      overflow-y: scroll;
+    }
+
+    #background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+      .fixed-content {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+      z-index: 1;
+    }
+
+    #current-time {
+      font-size: 48px;
+      color: white;
+      font-family: Helvetica, sans-serif;
+    }
+
+    #travel-time {
+      font-size: 3em;
+      font-family: Georgia, serif;
+      margin-top: 20px;
+    }
+
+    #greeting {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+}
+
+    #greeting p {
+      font-size: 1.5em;
+      font-family: Georgia, serif;
+}
+
+
+    h1 {
+      font-size: 3em;
+      font-family: Georgia, serif;
+      margin-top: 80px;
+    }
+
+    /* 添加黑色透明层 */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+
+    .navbar-custom {
+      background-color: rgba(169, 169, 169, 0.5);
+    }
+
+    .navbar-custom .navbar-brand {
+      font-family: Georgia, serif;
+      color: white;
+    }
+
+    .navbar-custom .navbar-nav .nav-link {
+      font-family: Georgia, sans-serif;
+      color: white;
+    }
+
+    .navbar-nav {
+      margin: auto;
+    }
+
+    .nav-link:hover {
+      text-decoration: underline;
+    }
+
+    .dropdown-menu-chinese {
+      background-color: transparent;
+    }
+
+    .dropdown-menu-chinese .dropdown-item {
+      font-family: Georgia, serif;
+      color: white;
+    }
+
+    .introductionDetails {
+      background-color: black;
+      color: white;
+    }
+
+    #carouselExampleIndicators {
+    background-color: black;
+    }
+
+    .left-text-container {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .img-container {
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .img-container img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    .footer a:hover {
+  color: #ffc107;
+}
+.card-img-top:hover {
+  border: 4px solid #ffc107;
+}
+
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Section 1: 包含视频的部分 -->
+  <div class="section" id="section1">
+
+    <!-- Background Video -->
+    <video id="background-video" autoplay loop muted>
+      <source src="kl.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- 固定内容 -->
+    <div class="fixed-content">
+      <div id="current-time"></div>
+
+      <!-- 时间 -->
+      <h1 id="travel-time">It's Time To Travel !</h1>
+      <div id="greeting">
+        <p>Welcome To Malaysia!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background Video -->
+  <video id="background-video" autoplay loop muted>
+    <source src="kl.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- 黑色透明层 -->
+  <div class="overlay"></div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- Display Current Time -->
+    <div id="current-time"></div>
+  </div>
+
+  <!-- Section 2 -->
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="malaysia.jpg" class="d-block w-100" alt="..." >
+    </div>
+    <div class="carousel-item">
+      <img src="10340428.jpg" class="d-block w-100" alt="..." >
+    </div>
+    <div class="carousel-item">
+      <img src="malaysia2.jpg" class="d-block w-100" alt="..." >
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+  <!--introductionDetails-->
+    <div class="introductionDetails row m-5 p-5">
+      <div class="col-lg-6 d-flex justify-content-between">
+
+        <!-- 左边介绍 -->
+        <div class="left-text-container">
+          <h2 style="font-family:Georgia,Serif; font-weight:bolder;">NEVER STOP</h2>
+          <h3 style="font-family:Georgia,Serif; font-weight:bolder;">EXPLORING THE</h3>
+          <h4 style="font-family:Georgia,Serif; font-weight:bolder;">WORLD.</h4>
+          <hr class="line">
+          <p id="introText" style="max-height: 100px; overflow: hidden; font-family: 'Times New Roman', serif;">
+        Welcome to Malaysia! Malaysia is a Southeast Asian country known for its diverse culture and stunning landscapes. Explore historical architecture, dive for treasures, and indulge in delicious cuisine. Whether it's adventure or relaxation you seek, Malaysia has it all !
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-6">
+
+        <!-- 右侧图片 Carousel -->
+        <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="IMG_3384.JPG" class="d-block w-100" alt="Image 1" style="height: 300px;">
+            </div>
+            <div class="carousel-item">
+              <img src="batucaves.jpg" class="d-block w-100" alt="Image 2" style="height: 300px;">
+            </div>
+            <div class="carousel-item">
+              <img src="penanghill.jpg" class="d-block w-100" alt="Image 3" style="height: 300px;">
+            </div>
+            <div class="carousel-item">
+              <img src="ocea.jpg" class="d-block w-100" alt="Image 3" style="height: 300px;">
+            </div>
+            <div class="carousel-item">
+              <img src="map.jpg" class="d-block w-100" alt="Image 3" style="height: 300px;">
+            </div>
+
+
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-custom">
+      <div class="container">
+        <a class="navbar-brand" href="#">MALAYSIA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+          <!-- 导航栏 -->
+          <ul class="navbar-nav ms-auto nav justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#section1">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#carouselExampleIndicators">ABOUT MALAYSIA</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="attractions.html">ATTRACTIONS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="food.html">FOOD</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contactus.html">CONTACT US</a>
+            </li>
+          </ul>
+
+            <ul class="dropdown-menu dropdown-menu-chinese" aria-labelledby="navbarDropdown1">
+              <li><a class="dropdown-item" href="#">FOOD</a></li>
+              <li><a class="dropdown-item" href="#">SPECIALTLY</a></li>
+            </ul>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                中文
+              </a>
+              <ul class="dropdown-menu dropdown-menu-English" aria-labelledby="navbarDropdown2">
+                <li><a class="dropdown-item" href="#">English</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- 导航栏结束 -->
+
+    <!-- Section 3: 游玩大马 -->
+  <div class="section" id="section3">
+    <div class="container">
+      <h2 class="text-center mt-5 mb-3 text-white">About Malaysia</h2>
+      <p class="text-white text-center">Malaysia enjoys a pleasant climate with abundant sunshine, captivating natural environments such as jungles, caves, and underwater worlds. All seasons are suitable for tourism, with the period from May to September being particularly ideal.</p>
+
+      <!--小照片 -->
+  <div class="row justify-content-center mt-4">
+    <div class="col-sm-4 mb-3">
+      <div class="card h-100">
+        <img src="sabah.jpg" class="card-img-top" alt="Image 1">
+        <div class="card-body">
+          <h5 class="card-title">Moutain Kinabalu, Sabah </h5>
+          <p class="card-text">A challenge not to be missed for nature enthusiasts and adventurers! Mount Kinabalu, the highest peak in Borneo and Malaysia, also the third highest island peak on Earth. It harbors rich tropical rainforest ecosystems, and climbing Mount Kinabalu requires a certain level of physical stamina and technical skill!</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4 mb-3">
+      <div class="card h-100">
+        <img src="qianshui.jpg" class="card-img-top" alt="Image 2">
+        <div class="card-body">
+          <h5 class="card-title">Tioman Island</h5>
+          <p class="card-text">A natural marine playground beloved by divers. In Tioman Island, as soon as you dip your head underwater, you're in a dive site, where you can encounter a rich diversity of marine species.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4 mb-3">
+      <div class="card h-100">
+        <img src="langkawicablecar.jpg" class="card-img-top" alt="Image 3">
+        <div class="card-body">
+          <h5 class="card-title">Langkawi Cable Car</h5>
+          <p class="card-text">SkyCab, it is one of the main attractions in Langkawi, Kedah, Malaysia. With a total length of 2.2 kilometers, the journey from the bottom to the top takes approximately 15 minutes! If you're not afraid of heights, come and experience it!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="container">
+      <h2 class="text-center mt-5 mb-3 text-white"> Optimal Months for Travel</h2>
+      <p class="text-white text-center">12-2: Mild climate, beautiful scenery, prices rise, booking in advance is necessary./p>
+        <p class="text-white text-center">11-3：Monsoon season, many island restaurants are closed to the public.</p>
+        <p class="text-white text-center">9-10：During the fasting month, many restaurants may be closed.</p>
+
+<!--穿搭-->
+  <div class="container">
+  <p class="text-center">
+    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      Outfit Guide
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      When traveling to Malaysia, where it's summer-like all year round, it's essential to pack 3-4 sets of summer outfits. Additionally, due to strong UV rays, sunglasses and sunscreen are must-haves. Carrying a lightweight long-sleeved shirt is also recommended; it can shield you from outdoor sunlight and indoor air conditioning. This dual-purpose item is essential. Since many regions in Malaysia still adhere to conservative local customs, it's advisable not to dress too revealingly in most public places. This is especially important when visiting temples and other religious sites; please remember to respect local customs.
+    </div>
+  </div>
+</div>
+
+<!--Language-->
+<div class="container">
+  <h2 class="text-center mt-5 mb-3 text-white"> Language</h2>
+  <p class="text-white text-center"> Malay  English   Chinese</p>
+
+
+<!--Footer-->
+  <footer class="footer mt-auto py-3 bg-dark">
+    <div class="container text-white">
+      <div class="row">
+        <div class="col-md-4">
+          <h5>Contact Us</h5>
+          <p><i class="fas fa-envelope"></i>  travelmalaysia@gmail.com</p>
+          <p><i class="fas fa-phone"></i>  +60-1127604260</p>
+          <p><i class="fas fa-map-marker-alt"></i>  18, JALAN AMPANG, KUALA LUMPUR, 50450 KUALA LUMPUR, MALAYSIA</p>
+        </div>
+        <div class="col-md-4">
+          <h5>Information</h5>
+          <p>About Us</p>
+          <p>Privacy Policy</p>
+          <p>Terms and Conditions</p>
+        </div>
+        <div class="col-md-4">
+          <h5>About Malaysia</h5>
+          <p>Explore the beauty of Malaysia, a land of diverse cultures and stunning landscapes.</p>
+          <p>Welcome to explore the beauty of Malaysia, a land rich in diverse cultures and enchanting landscapes!</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center">
+          <p>
+            <i class="fas fa-copyright"></i> 2024 Travel Malaysia Promotion Board (All Rights Reserved)
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    function displayCurrentTime() {
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+      var ampm = hours >= 12 ? 'PM' : 'AM';
+
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+      minutes = (minutes < 10 ? "0" : "") + minutes;
+      seconds = (seconds < 10 ? "0" : "") + seconds;
+
+      var timeString = hours + ":" + minutes + ":" + seconds + " " + ampm;
+      document.getElementById("current-time").textContent = timeString;
+    }
+
+
+    setInterval(displayCurrentTime, 1000);
+
+
+    window.addEventListener('scroll', function() {
+      var scrollPosition = window.scrollY;
+    });
+  </script>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
