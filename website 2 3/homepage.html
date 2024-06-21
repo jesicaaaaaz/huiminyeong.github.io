@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选课主页</title>
+    <link rel="stylesheet" href="1style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
+        body {
+    font-family: "Fredoka", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 20px;
+            margin-top: 30px;
+            padding: 0 200px;
+        }
+
+        .header a.active {
+            color: #559DC5;
+        }
+
+        .header input {
+            border-color: #000000;
+            border-width: thin;
+            border-radius: 20px;
+            margin-left: 125px;
+            left: 88px;
+            width: 400px;
+            height: 27px;
+        }
+
+        input {
+            margin-right: -300px;
+            font-family: "Fredoka", sans-serif;
+        }
+
+        .header a {
+            text-decoration: none;
+            color: #B74330;
+            margin: 0 30px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .header a.active {
+            text-decoration: underline;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-color: #559DC5;
+            border-radius: 50%;
+            margin-right: 50px;
+        }
+
+        .review-box {
+            position: relative;
+        }
+
+        .evilsmiley,
+        .smiley {
+            position: absolute;
+            bottom: 10px;
+            width: 100px;
+            height: 200px;
+        }
+
+        .evilsmiley {
+            right: 20px;
+        }
+
+        .smiley {
+            left: 20px; 
+        }
+
+        .circleContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+            margin: 10px;
+        }
+
+        .circleContainer2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+            margin: 10px;
+        }
+
+        .circle1,
+        .circle2,
+        .circle3,
+        .circle4,
+        .circle5,
+        .circle6,
+        .hugecircle,
+        .smallcircle,
+        .hugecircle2,
+        .smallcircle2 {
+            border: 2px solid #F8D4B3;
+            border-radius: 50%;
+            width: 170px;
+            height: 170px;
+            overflow: hidden;
+            position: relative;
+            margin-right: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .hugecircle,
+        .hugecircle2 {
+            border-radius: 90px;
+            width: 600px;
+            height: 170px;
+        }
+
+        .smallcircle,
+        .smallcircle2 {
+            width: 200px;
+            height: 120px;
+            border-radius: 90px;
+        }
+
+        .circle1:hover,
+        .circle2:hover,
+        .circle3:hover,
+        .circle4:hover,
+        .circle5:hover,
+        .circle6:hover,
+        .hugecircle:hover,
+        .smallcircle:hover,
+        .hugecircle2:hover,
+        .smallcircle2:hover {
+            transform: scale(1.2);
+        }
+
+        .hugecircle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border: 2px solid #559DC5;
+            background-color: #D1E3EF;
+        }
+
+        .smallcircle {
+            border: 2px solid #559DC5;
+            margin-left: 350px;
+        }
+
+        .hugecircle2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border: 1.5px solid #B74330;
+            background-color: #F8D4B3;
+        }
+
+        .smallcircle2 {
+            border: 1.5px solid #B74330;
+            margin-right: 350px;
+        }
+
+        .img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: relative;
+        }
+
+        .text,
+        .text2 {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            font-size: 1.5rem;
+            font-weight: bold;
+            transform: translateY(-50%);
+            text-align: center;
+            line-height: 1.1;
+        }
+
+        .text2 {
+            right: 100px;
+            left: 80px;
+        }
+
+        .text p,
+        .text2 p {
+            margin: 0;
+            color: black;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <a href="#" class="active">Course Selection</a>
+        </div>
+        <img class="avatar" src="OIP.jpg" alt="User Avatar">
+    </div>
+    <h1 class="title">中传学生的</h1>
+    <h1 class="title">选课评价系统!</h1>
+    <div class="review-box">
+        <div class="evilsmiley">
+            <img class="evilsmiley" src="smile1.png" alt="devil smile">
+        </div>
+        <div class="smiley">
+            <img class="smiley" src="smile.png" alt="angle smile">
+        </div>
+    </div>
+
+    <div class="circleContainer">
+        <div class="circle1">
+            <img src="course1.jpg" alt="Course 1" class="img">
+        </div>
+        <div class="circle2">
+            <img src="course2.jpg" alt="Course 2" class="img">
+        </div>
+        <a href="4.html" class="hugecircle">
+            <div class="smallcircle">
+                <img src="course3.jpg" alt="Course 3" class="img">
+            </div>
+            <div class="text">
+                <p>必选</p>
+                <p>/限选课程</p>
+            </div>
+        </a>
+        <div class="circle3">
+            <img src="course1.jpg" alt="Course 1" class="img">
+        </div>
+    </div>
+
+    <div class="circleContainer2">
+        <div class="circle4">
+            <img src="course3.jpg" alt="Course 3" class="img">
+        </div>
+        <a href="5.html" class="hugecircle2">
+            <div class="smallcircle2">
+                <img src="course2.jpg" alt="Course 4" class="img">
+            </div>
+            <div class="text2">
+                <p>选修课</p>
+            </div>
+        </a>
+        <div class="circle5">
+            <img src="course1.jpg" alt="Course 1" class="img">
+        </div>
+        <div class="circle6">
+            <img src="course3.jpg" alt="Course 3" class="img">
+        </div>
+    </div>
+</body>
+</html>

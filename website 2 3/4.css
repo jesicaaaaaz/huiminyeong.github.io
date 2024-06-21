@@ -1,0 +1,136 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px;
+
+}
+
+.header {
+  margin-top: 30px;
+  padding: 0 10px;
+
+}
+
+.header a:not(:last-child)::after {
+  content: "|";
+  margin-left:60px;
+}
+.header a.active {
+color: #559DC5;
+
+}
+.header input {
+    border-color:#000000;
+    border-width: thin;
+    border-radius: 20px;
+    width: 400px;
+    height: 30px;
+
+}
+input {
+  margin-right: -250px;
+    font-family: "Fredoka", sans-serif;
+}
+  .header a {
+      text-decoration: none;
+      color: #B74330;
+      margin: 0 30px;
+      font-weight: bold;
+      font-size: 1.2rem;
+  }
+  .header a.active {
+      text-decoration: underline;
+  }
+
+  .avatar {
+      width: 40px;
+      height: 40px;
+      border-color:#559DC5;
+      border-radius: 50%;
+      margin-right: 10px;
+
+  }
+
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.top-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.top-section h2 {
+    color: #2E7DA3;
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #000000;
+    font-size: 1.1em;
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.form-control {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 70%;
+}
+
+.btn {
+    padding: 8px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #559DC5;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #2E7DA3;
+    color: #000000; 
+}

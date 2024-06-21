@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6</title>
+    <link rel="stylesheet" href="6.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .header {
+            text-align: left;
+            margin-bottom: 10px;
+            margin-left: 20px;
+        }
+
+        .header h2 {
+            font-size: 1.8em;
+            margin: 0;
+        }
+
+        .header span {
+            color: #2E7DA3;
+            font-size: 0.9em;
+        }
+
+        .header .separator {
+            color: #CFABEB;
+            margin: 0 5px;
+            font-size: 0.9em;
+        }
+
+        .header .title {
+            color: #000000;
+            font-size: 1.2em;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            margin-left: 20px;
+        }
+
+        .form-control {
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 250px;
+        }
+
+        .btn {
+            padding: 8px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #559DC5;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .left-column {
+            margin-bottom: 10px;
+        }
+
+        .slider img {
+            width: 100%;
+            height: auto;
+            margin-top: 0;
+            margin-bottom: 10px; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+      <div class="header">
+          <div>
+            <a href="#" class="active" onclick ="window.location.href = 'course1/homepage.html';">选课</a>
+              <a href="#" style="color: black;">影视广告</a>
+          </div>
+        <input type="text" placeholder="搜索课程" style="opacity:0">
+          <img class="avatar" src="OIP.jpg" alt="User Avatar">
+      </div>
+
+    </div>
+
+    <div class="container">
+        <div class="left-column">
+            <div class="slider">
+                <img src="class.jpg" alt="Image 1">
+            </div>
+        </div>
+        <div class="right-column">
+            <h1>影视广告</h1>
+            <div class="basic-info">
+                <h2>基础信息</h2>
+                <div class="additional-info">
+                    <p>20230608</p>
+                    <p>广告学院</p>
+                    <p>何和呵</p>
+                    <p>8:00-11:50</p>
+                </div>
+            </div>
+            <div id="chart">
+            </div>
+            <div class="course-info">
+                <h2>课程内容</h2>
+                  <p>课程简介：本课程是广告学院设计专业本科生的必修专业课。主要讲授：影视广告的发展历程、影视广告的特性、影视广告的基本类型、影视广告的构成要素以及创作和制作的流程。
+                  </p>
+                <h2>课程评价</h2>
+                <div class="evaluation-buttons">
+                    <button class="devil-version" id="button" onclick ="window.location.href = 'coursepagedevil.html';">恶魔版</button>
+                    <p>请做好准备，你将看到一些课程差评。</p>
+                    <button class="angel-version" id="button" onclick ="window.location.href = 'coursepage.html';">天使版</button>
+                    <p>你将看到一些课程好评。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
