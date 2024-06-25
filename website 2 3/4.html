@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="4.css">
     <link rel="shortcut icon" href="cuc.png" type="image/png">
     <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-68MR88MQHR"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-68MR88MQHR'); </script>
-    <script src="4.js"></script>
+   <script src="4.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,10 +17,25 @@
         }
 
         .container {
-            padding: 20px 20px 20px 10px;
-            max-width: 1200px;
-            margin-left: 20px;
-        }
+           padding: 20px 20px 20px 10px;
+           max-width: 1200px;
+           margin-left: 20px;
+           position: relative;
+       }
+
+       .container:after {
+           content: "";
+           background-image: url('background.png');
+           background-size: cover;
+           background-position: center;
+           opacity: 0.1;
+           top: 0;
+           left: 0;
+           right: 0;
+           bottom: 0;
+           position: absolute;
+           z-index: -1;
+       }
 
         .top-section {
             display: flex;
@@ -140,50 +155,83 @@
         .custom-buttons {
             margin-top: 20px;
         }
+
     </style>
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-  const dropdowns = document.querySelectorAll(".dropdown-content");
-
-  dropdowns.forEach(dropdown => {
-      dropdown.addEventListener("click", function (e) {
-          e.preventDefault();
-          const filterType = dropdown.parentElement.querySelector(".dropbtn").textContent.trim();
-          const filterValue = e.target.getAttribute("data-filter");
-          filterTable(filterType, filterValue);
-      });
-  });
-
-         function filterTable(type, filter) {
-             const rows = document.querySelectorAll("tbody tr");
-             rows.forEach(row => {
-                 let cellText = "";
-                 switch (type) {
-                     case "学院":
-                         cellText = row.querySelector("td:nth-child(4)").textContent || row.querySelector("td:nth-child(4)").innerText;
-                         break;
-                     case "学分":
-                         cellText = row.querySelector("td:nth-child(6)").textContent || row.querySelector("td:nth-child(6)").innerText;
-                         break;
-                     case "课程时间":
-                         cellText = row.querySelector("td:nth-child(7)").textContent || row.querySelector("td:nth-child(7)").innerText;
-                         break;
-                     default:
-                         break;
-                 }
-                 if (filter === "全部" || cellText.includes(filter)) {
-                 row.style.display = "";
-             } else {
-                 row.style.display = "none";
-               }
-             });
-         }
-     });
-
         document.addEventListener("DOMContentLoaded", function () {
+            const dropdowns = document.querySelectorAll(".dropdown-content");
+
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    const filterType = dropdown.parentElement.querySelector(".dropbtn").textContent.trim();
+                    const filterValue = e.target.getAttribute("data-filter");
+                    if (filterType === "好评率" && (filterValue === "asc" || filterValue === "desc")) {
+                        sortTable(filterValue);
+                    } else {
+                        filterTable(filterType, filterValue);
+                        if (filterValue === "全部") {
+                            resetTableOrder();
+                        }
+                    }
+                });
+            });
+
+            function filterTable(type, filter) {
+                const rows = document.querySelectorAll("tbody tr");
+                rows.forEach(row => {
+                    let cellText = "";
+                    switch (type) {
+                        case "学院":
+                            cellText = row.querySelector("td:nth-child(4)").textContent || row.querySelector("td:nth-child(4)").innerText;
+                            break;
+                        case "学分":
+                            cellText = row.querySelector("td:nth-child(6)").textContent || row.querySelector("td:nth-child(6)").innerText;
+                            break;
+                        case "课程时间":
+                            cellText = row.querySelector("td:nth-child(7)").textContent || row.querySelector("td:nth-child(7)").innerText;
+                            break;
+                        case "好评率":
+                            cellText = row.querySelector("td:nth-child(8)").textContent || row.querySelector("td:nth-child(8)").innerText;
+                            break;
+                        default:
+                            break;
+                    }
+                    if (filter === "全部" || cellText.includes(filter)) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
+                });
+            }
+
+            function sortTable(order) {
+                const table = document.querySelector("table tbody");
+                const rows = Array.from(table.rows);
+                rows.sort((a, b) => {
+                    const aRate = parseFloat(a.cells[7].textContent.replace('%', ''));
+                    const bRate = parseFloat(b.cells[7].textContent.replace('%', ''));
+                    return order === 'asc' ? aRate - bRate : bRate - aRate;
+                });
+                rows.forEach(row => table.appendChild(row));
+            }
+
+            function resetTableOrder() {
+                const table = document.querySelector("table tbody");
+                const rows = Array.from(table.rows);
+                rows.sort((a, b) => {
+                    const aIndex = parseInt(a.cells[0].textContent);
+                    const bIndex = parseInt(b.cells[0].textContent);
+                    return aIndex - bIndex;
+                });
+                rows.forEach((row, index) => {
+                    row.cells[0].textContent = index + 1;
+                    table.appendChild(row);
+                });
+            }
+
             const courseSearchInput = document.getElementById('courseSearch');
 
-            // Listen for keyup event on the search input
             courseSearchInput.addEventListener('keyup', function (event) {
                 if (event.key === 'Enter') {
                     performSearch(courseSearchInput.value.trim());
@@ -194,7 +242,7 @@
                 const rows = document.querySelectorAll('tbody tr');
 
                 rows.forEach(row => {
-                    const cells = row.querySelectorAll('td'); 
+                    const cells = row.querySelectorAll('td');
 
                     let found = false;
                     cells.forEach(cell => {
@@ -210,9 +258,17 @@
                     }
                 });
             }
+
+            const rows = document.querySelectorAll('tbody tr');
+            rows.forEach(row => {
+                row.addEventListener('click', function () {
+                    row.classList.add('selected');
+                });
+            });
         });
     </script>
 </head>
+
 <body>
 <div class="container">
     <div class="header">
@@ -255,8 +311,17 @@
                 <a href="#" data-filter="13:30-16:50">下午</a>
                 <a href="#" data-filter="18:00-21:50">晚上</a>
             </div>
-        </div>
+          </div>
+          <div class="dropdown">
+    <button class="btn dropbtn" id="ratingDropdown">好评率</button>
+    <div class="dropdown-content">
+        <a href="#" data-filter="全部">全部</a>
+        <a href="#" data-filter="asc">由低至高</a>
+        <a href="#" data-filter="desc">由高至低</a>
     </div>
+</div>
+
+   </div>
 
     <table>
         <thead>
@@ -268,6 +333,7 @@
             <th>课程老师</th>
             <th>学分</th>
             <th>课程时间</th>
+            <th>好评率</th>
         </tr>
         </thead>
         <tbody>
@@ -279,6 +345,7 @@
             <td>何和呵</td>
             <td>3</td>
             <td>8:00-11:50</td>
+            <td>77%</td>
         </tr>
         <tr>
             <td>2</td>
@@ -288,6 +355,7 @@
             <td>张艺术</td>
             <td>3</td>
             <td>13:30-16:50</td>
+            <td>58%</td>
         </tr>
         <tr>
             <td>3</td>
@@ -297,6 +365,7 @@
             <td>付小慢</td>
             <td>2</td>
             <td>8:00-11:50</td>
+            <td>91%</td>
         </tr>
         <tr>
             <td>4</td>
@@ -306,6 +375,7 @@
             <td>萧笑笑</td>
             <td>1</td>
             <td>18:00-21:50</td>
+            <td>75%</td>
         </tr>
         <tr>
             <td>5</td>
@@ -315,6 +385,7 @@
             <td>隋欣益</td>
             <td>1</td>
             <td>18:00-21:50</td>
+            <td>71%</td>
         </tr>
         <tr>
             <td>6</td>
@@ -324,6 +395,7 @@
             <td>刘朋</td>
             <td>2</td>
             <td>18:00-21:50</td>
+              <td>73%</td>
         </tr>
         <tr>
             <td>7</td>
@@ -333,6 +405,7 @@
             <td>孙文杰</td>
             <td>1</td>
             <td>13:30-16:50</td>
+              <td>82%</td>
         </tr>
         <tr>
             <td>8</td>
@@ -342,6 +415,7 @@
             <td>萧笑笑</td>
             <td>3</td>
             <td>18:00-21:50</td>
+              <td>78%</td>
         </tr>
         <tr>
             <td>9</td>
@@ -351,6 +425,7 @@
             <td>张云</td>
             <td>2</td>
             <td>8:00-11:50</td>
+              <td>89%</td>
         </tr>
         <tr>
             <td>10</td>
@@ -360,6 +435,7 @@
             <td>钟宇静</td>
             <td>2</td>
             <td>13:30-16:50</td>
+              <td>86%</td>
         </tr>
         <tr>
             <td>11</td>
@@ -369,6 +445,7 @@
             <td>杨敏</td>
             <td>3</td>
             <td>8:00-11:50</td>
+            <td>87%</td>
         </tr>
         <tr>
             <td>12</td>
@@ -378,6 +455,7 @@
             <td>彭展</td>
             <td>1</td>
             <td>18:00-21:50</td>
+              <td>79%</td>
         </tr>
         <tr>
             <td>13</td>
@@ -387,6 +465,7 @@
             <td>李楠</td>
             <td>2</td>
             <td>8:00-11:50</td>
+              <td>68%</td>
         </tr>
         <tr>
             <td>14</td>
@@ -396,6 +475,7 @@
             <td>肖术</td>
             <td>2</td>
             <td>13:30-16:50</td>
+              <td>72%</td>
         </tr>
         <tr>
             <td>15</td>
@@ -405,6 +485,7 @@
             <td>蓝善祯</td>
             <td>1</td>
             <td>8:00-11:50</td>
+              <td>76%</td>
         </tr>
         <tr>
             <td>16</td>
@@ -414,6 +495,7 @@
             <td>王晓丹</td>
             <td>2</td>
             <td>18:00-21:50</td>
+              <td>74%</td>
         </tr>
         <tr>
             <td>17</td>
@@ -423,6 +505,7 @@
             <td>王欣</td>
             <td>3</td>
             <td >18:00-21:50</td>
+              <td>84%</td>
         </tr>
         <tr>
             <td>18</td>
@@ -432,6 +515,7 @@
             <td>戴娜</td>
             <td>1</td>
             <td>8:00-11:50</td>
+              <td>90%</td>
         </tr>
         <tr>
             <td>19</td>
@@ -441,6 +525,7 @@
             <td>姜薇</td>
             <td>2</td>
             <td>18:00-21:50</td>
+            <td>93%</td>
         </tr>
         <tr>
             <td>20</td>
@@ -450,9 +535,11 @@
             <td>赵梦迪</td>
             <td>2</td>
             <td>8:00-11:50</td>
+            <td>92%</td>
         </tr>
         </tbody>
     </table>
 </div>
+
 </body>
 </html>
